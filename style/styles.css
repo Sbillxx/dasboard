@@ -12,6 +12,7 @@ body {
     display: flex;
     height: 100vh;
     background-color: #f0f0f0;
+    overflow-x: hidden;
 }
 
 .container {
@@ -28,6 +29,19 @@ body {
     display: flex;
     flex-direction: column;
     align-items: center;
+    position: fixed;
+    left: -250px;
+    /* Start off-screen */
+    top: 0;
+    height: 100%;
+    transition: left 0.3s ease;
+    /* Smooth transition */
+    z-index: 1000;
+}
+
+.sidebar.active {
+    left: 0;
+    /* Slide in */
 }
 
 .sidebar h2 {
@@ -62,6 +76,11 @@ body {
     flex-grow: 1;
     padding: 20px;
     background-color: white;
+    margin-left: 50px;
+    /* Space for toggle button */
+    width: calc(100% - 50px);
+    transition: margin-left 0.3s ease;
+    /* Smooth transition */
 }
 
 .header {
@@ -74,6 +93,21 @@ body {
 .header h1 {
     font-size: 24px;
     font-weight: bold;
+}
+
+.btn-toggle {
+    padding: 10px 15px;
+    background-color: #447d46;
+    color: white;
+    border: none;
+    cursor: pointer;
+    font-size: 20px;
+    border-radius: 5px;
+    margin-right: 10px;
+}
+
+.btn-toggle:hover {
+    background-color: #356b36;
 }
 
 .btn-add {
@@ -109,8 +143,6 @@ table td {
     vertical-align: middle;
     border-bottom: 1px solid #ddd;
     border-top: 1px solid black;
-    /* border-left: 1px solid black; */
-    /* border: 1px solid black ;s */
 }
 
 table th {
